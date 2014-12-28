@@ -10,9 +10,9 @@ void replacer(char *str, int n){
 
 	if(s == 0) return;
 
-	char *iStart, *iEnd;
+	char *iStart, *iEnd, *iFree;
 
-	iStart = iEnd = malloc(sizeof(char) * (n + 2*s));
+	iFree = iStart = iEnd = malloc(sizeof(char) * (n + 2*s));
 
 	for(i=0; i<n; i++){
 		if(str[i] == ' '){
@@ -29,6 +29,8 @@ void replacer(char *str, int n){
 
 	for(;iStart < iEnd; iStart++, str++)
 		*str = *iStart;
+
+	free(iFree);
 
 }
 
