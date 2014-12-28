@@ -21,8 +21,8 @@ void mergesort(int *arr, int n){
 	int i,j,k;
 	int *temp = malloc(sizeof(int) * n);
 
-	for(i=0, j=mid, k=0; i<mid && j<n; k++){
-		if(arr[i] < arr[j]){
+	for(i=0, j=mid, k=0; k<n ; k++){
+		if(i < mid && (j >= n || arr[i] < arr[j]) ){
 			temp[k] = arr[i];
 			i++;
 		}
@@ -30,18 +30,6 @@ void mergesort(int *arr, int n){
 			temp[k] = arr[j];
 			j++;
 		}
-	}
-
-	while(i<mid){
-		temp[k] = arr[i];
-		i++;
-		k++;
-	}
-
-	while(j<n){
-		temp[k] = arr[j];
-		j++;
-		k++;
 	}
 
 	for(i=0; i<n; i++)
