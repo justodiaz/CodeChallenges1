@@ -40,7 +40,7 @@ void compress(char *str){ //time: O(3n) space: O(n)
 	int k;
 	char *temp = malloc(sizeof(char) * newSize);
 
-	for(i=0, k=0; ; i++){
+	for(i=0, k=0, c = str[i]; ; i++){
 		if(str[i] == c){
 			count++;
 		}
