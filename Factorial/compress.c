@@ -26,7 +26,7 @@ void compress(char *str){ //time: O(3n) space: O(n)
 			digits += countdigits(count);
 			if(str[i] == '\0') break;
 
-			count = 0;
+			count = 1;
 			c = str[i];
 		}
 
@@ -40,7 +40,7 @@ void compress(char *str){ //time: O(3n) space: O(n)
 	int k;
 	char *temp = malloc(sizeof(char) * newSize);
 
-	for(i=0, k=0, c = str[i]; ; i++){
+	for(i=0, k=0, c = str[i], count = 0; ; i++){
 		if(str[i] == c){
 			count++;
 		}
@@ -50,7 +50,7 @@ void compress(char *str){ //time: O(3n) space: O(n)
 
 			if(i >= size) break;
 
-			count = 0;
+			count = 1;
 			c = str[i];
 		}
 	}
@@ -70,7 +70,7 @@ int main(){
 	#elif defined two
 	char str[] = "abc";
 	#else
-	char str[] = "aabbbcc";
+	char str[] = "aaaaaaaaaabbbcc";
 	#endif
 
 	compress(str);
