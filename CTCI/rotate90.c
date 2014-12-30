@@ -1,7 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //hello
 
-void rotate90(int n, int img[][n]){
+#define N 3
+
+void rotate90(int n, int img[][n]){ //time: O(2n^2) space: O(n^2)
 	int *newImg = malloc(sizeof(int) * n*n);
 
 	int i,j;
@@ -17,7 +19,7 @@ void rotate90(int n, int img[][n]){
 	
 }
 
-void printImg(int n, int img[][n]){
+void printImg(int n, int img[][n]){ //O(n^2)
 	int i,j;
 
 	for(i=0; i<n; i++){
