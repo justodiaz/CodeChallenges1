@@ -1,3 +1,4 @@
+//flawed can't use FLAG for integer matrix;
 #include <stdio.h>
 
 #define FLAG -1
@@ -26,7 +27,7 @@ void mark(int row, int col, int m, int n, int matrix[][n], Skip skip){
 		}
 }
 
-void transform(int m, int n, int matrix[][n]){
+void transform(int m, int n, int matrix[][n]){ //O(3mn)
 	int i,j;
 	for(i=0; i < m; i++)
 		for(j=0; j < n; j++)
@@ -42,7 +43,7 @@ void transform(int m, int n, int matrix[][n]){
 			}
 }
 
-void printImg(int m, int n, int img[][n]){ //O(n^2)
+void printImg(int m, int n, int img[][n]){ //O(mn)
 	int i,j;
 
 	for(i=0; i<m; i++){
