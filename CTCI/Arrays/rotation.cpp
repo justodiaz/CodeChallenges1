@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-//time: worst O(n^2 + 2n) avg O(4n) space: O(1)
+//time: worst O(n^2) best O(n) space: O(1)
 bool isRotation(char *s1, char *s2){ 
 	int n, n2, i, p1, p2;
 
@@ -14,8 +14,8 @@ bool isRotation(char *s1, char *s2){
 	bool done = false;
 	for(i=0; i<n && !done; i++) //O(n^2)
 		if(s2[i] == s1[0]){
-			for(p1=1, p2=i+1; p2<n && s1[p1]==s2[p2]; p1++, p2++){}
-
+			for(p1=1, p2=i+1; p2<n && s1[p1]==s2[p2]; p1++, p2++)
+			{}
 			if(p2 >= n) done = true; //substring complete and match
 		}
 
