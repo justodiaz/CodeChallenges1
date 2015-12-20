@@ -25,15 +25,18 @@ class List{
 
 	void _printList(Node *p){
 		if(!p) return;
-
 		cout << p->getData() << " ";
-
 		_printList(p->getNext());
 	}
 
 	public:
 	List(string name){ //constructor
 		this->name = name;
+		head = NULL;
+		sz = 0;
+	}
+	List(){ //no arg constructor
+		name = "";
 		head = NULL;
 		sz = 0;
 	}
@@ -57,6 +60,13 @@ class List{
 				pt = pt->getNext();
 			}
 		}
+
+	}
+
+	Node *_getRefNode(int n, Node *h){
+		if(n == 1) return h;
+
+		return _getRefNode(n-1, h->getNext());
 	}
 
 	List& operator=(List &ls){ //copy assingment
@@ -105,7 +115,7 @@ class List{
 	int size(){ return sz; }
 
 	void printList(){
-		if(!head) cout << "Empty List" << endl;
+		if(!head) { cout << "Empty List" << endl; return; }
 
 		cout << "[ " ;
 		_printList(head);
@@ -133,24 +143,58 @@ class List{
 
 	void myNameIs(){
 		cout << "Hi, my name is " << name << endl;
+	
 	}
 
+	Node *getRefNode(int n){
+		if(n<1 || n > sz){
+			cout << "out of range node" << endl;
+			return NULL;
+		}
+
+		return _getRefNode(n, head);
+	}
+
+	void removeNodeByRef(Node *node){
+		if(!node) return;
+
+		Node *p = NULL, *c = node;
+
+		while(c->getNext()){
+			p = c;
+			c = c->getNext();
+			p->setData(c->getData());
+		}
+
+		if(p){
+			delete c;
+			p->setNext(NULL);
+			sz--;
+		}
+		else{
+			cout << "Error can't delete last node in linked list" << endl;
+		}
+
+	}	
+
+		
 };
 
 int main(){
-	//return *this instead of void
 	List ls("Biggie");
 	List *ls2 = new List("Jack");
-
 	//ls
 	ls.myNameIs();
 
-	ls.add(5).add(3);
+	ls.add(5).add(3).add(6).add(7);
 
 	cout << "List size: " << ls.size() << endl;
 	ls.printList();
 
 
+	ls.removeNodeByRef(ls.getRefNode(3)); //2nd
+
+	ls.printList();
 	//ls2
 	ls2->myNameIs();
 	ls2->add(1);
@@ -179,6 +223,8 @@ int main(){
 	ls4 = ls3; //call to clear!
 
 	ls4.printList();
+
+	//ls5
 
 	return 0;
 }
