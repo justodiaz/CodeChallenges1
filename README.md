@@ -1,3 +1,3 @@
-test
+Solutions to some coding challenges
 ====
-Testing from github.com
+Code written to solve some coding challenges
